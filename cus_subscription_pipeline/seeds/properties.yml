@@ -1,0 +1,21 @@
+version: 2
+
+seeds:
+  - name: product_info
+    description: Data on product types
+    config:
+      column_type:
+        NAME: varchar(10)
+    columns: 
+      - name: BILLING_CYCLE
+        test:
+          - not_null
+      - name: NAME
+        test:
+          - not_null
+      - name: PRICE
+        test:
+          - not_null
+      - name: PRODUCT_ID
+        test:
+          - not_null         

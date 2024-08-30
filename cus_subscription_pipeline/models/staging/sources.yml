@@ -1,0 +1,44 @@
+version: 2
+
+sources:
+  - name: raw_CUSTOMER_CASES
+    description: This file contains all cases received from customers from various channels and reasons.
+    database: CUSTOMER_SUBSCRIPTION  # Ensure the correct case is used
+    schema: RAW_DATA
+    tables:
+      - name: CUSTOMER_CASES
+        columns:
+          - name: CASE_ID
+            tests:
+              - unique
+              - not_null
+          - name: CUSTOMER_ID
+            tests:
+              - unique
+              - not_null
+
+  - name: raw_customer_products
+    description: This file captures product sign-ups and cancellations by customers.
+    database: CUSTOMER_SUBSCRIPTION  # Ensure the correct case is used
+    schema: RAW_DATA
+    tables:
+      - name: CUSTOMER_PRODUCTS
+        columns:
+          - name: PRODUCT
+            tests:
+              - accepted_values:
+                  values: ['prd_1', 'prd_2']
+              - not_null
+
+  - name: raw_CUSTOMER_INFO
+    description: This file contains customer demographic information as of the signup date.
+    database: CUSTOMER_SUBSCRIPTION  # Ensure the correct case is used
+    schema: RAW_DATA
+    tables:
+      - name: CUSTOMER_INFO
+        columns:
+          - name: CUSTOMER_ID
+            tests:
+              - unique
+              - not_null
+            
